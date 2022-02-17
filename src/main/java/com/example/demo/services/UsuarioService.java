@@ -18,8 +18,8 @@ public class UsuarioService {
         return (ArrayList<UsuarioModel>)usuarioRepository.findAll();
     }
 
-    public UsuarioModel guardarUsuario(UsuarioModel usuario){
-        return usuarioRepository.save(usuario);
+    public UsuarioModel guardarUsuario(UsuarioModel usuario) {
+                return usuarioRepository.save(usuario);
     }
 
     public Optional<UsuarioModel> obtenerPorId(Long id){
@@ -37,5 +37,13 @@ public class UsuarioService {
         }catch (Exception err){
             return false;
         }
+    }
+
+    public void eliminarTodosLosUsuarios(UsuarioModel usuario){
+        usuarioRepository.deleteById(usuario.getId());
+    }
+
+    public ArrayList<UsuarioModel> obtenerPorApellido(String apellido){
+        return usuarioRepository.findByApellido(apellido);
     }
 }

@@ -12,8 +12,21 @@ public class UsuarioModel {
     private Long id;
 
     private String nombre;
+    private String apellido;
     private String email;
     private Integer prioridad;
+
+    public UsuarioModel() {
+        this.prioridad = 1;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
 
     public void setPrioridad(Integer prioridad){
         this.prioridad = prioridad;

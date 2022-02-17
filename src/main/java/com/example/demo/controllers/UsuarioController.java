@@ -44,6 +44,20 @@ public class UsuarioController {
         }
     }
 
+    //Muestra la cantidad de usuarios que hay en la BD en números.
+    @GetMapping("/total")
+    public String cantidadDeUsuarios(){
+        return "Hay " + usuarioService.obtenerUsuarios().size() + " usuarios registrado en la BD.";
+    }
 
+    //Elimina todos los usuarios de la BD.
+    @DeleteMapping("/eliminarTodos")
+    public void eliminarTodosLosUsuarios(){
+        usuarioService.obtenerUsuarios().forEach(usuarioService::eliminarTodosLosUsuarios);
+    }
 
+    @GetMapping("/consulta")
+    public ArrayList<UsuarioModel> obtenerUsuarioPorApellido(@RequestParam("apellido") String apellido){
+        return usuarioService.obtenerPorApellido(apellido);
+    }
 }
